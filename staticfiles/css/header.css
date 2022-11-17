@@ -1,0 +1,204 @@
+/* General effectsß */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+/* Container effects */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 80vh;
+}
+
+/* Header effects */
+.header {
+  display: flex;
+  width: 100%;
+  height: 10%;
+}
+
+.logo {
+  display: flex;
+  width: 25%;
+  padding-left: 1em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 100%;
+}
+
+.navigation ul {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 1em;
+  list-style: none;
+}
+
+.navigation ul li {
+  display: flex;
+  margin-right: 1em;
+}
+
+.navigation ul li a {
+  font-family: Montserrat Medium;
+  text-decoration: none;
+  color: rgb(53, 53, 53);
+  font-size: 1.05em;
+}
+
+.navigation ul li button {
+  width: 8em;
+  height: 3em;
+  background: #228b22;
+  border: none;
+  border-radius: 1.2em;
+  margin-top: -0.8em;
+}
+
+.navigation ul li:last-child a {
+  color: #fff;
+  font-size: 1.2em;
+}
+
+.bars-ctn {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  height: 10%;
+  width: 3em;
+  left: 90%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.bars {
+  width: 90%;
+  border: 3px solid #228b22;
+  margin-bottom: 0.3em;
+  cursor: pointer;
+}
+
+.sp-br {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-image: url("../images/christmas\,winters\,zoom-backgrounds-design-template-2f82e6795277895dcf262abc01413bb7_screen.jpeg");
+  background-position: center;
+  background-size: cover;
+  justify-content: center;
+  /* padding-left: 5em; */
+}
+.banner::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.3);
+}
+
+.banner h3 {
+  line-height: 1.2em;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 3em;
+  font-family: poppins;
+  z-index: 1;
+  margin-left: 1.5em;
+}
+.banner p {
+  margin-top: 1em;
+  color: #fff;
+  font-size: 1.5em;
+  font-family: Montserrat;
+  line-height: 1.5em;
+  z-index: 1;
+  margin-left: 3em;
+}
+
+.banner button {
+  margin-top: 1.9em;
+  border: none;
+  border-radius: 2em;
+  background: #228b22;
+  width: 10em;
+  height: 3.4em;
+  z-index: 1;
+  margin-left: 5em;
+}
+.banner button a {
+  font-family: Montserrat;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.test {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.testimony {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -30%;
+  width: 100%;
+  height: 100vh;
+  border-radius: 50%;
+  background: rgb(184, 206, 162);
+  z-index: -1;
+}
+
+.monials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 83%;
+  height: 100%;
+}
+
+.monials h3 {
+  font-family: Montserrat;
+  font-size: 2em;
+  text-align: center;
+  border-bottom: 6px solid rgb(25, 119, 25);
+  margin-bottom: 1em;
+}
+
+.monials p {
+  font-family: Montserrat;
+  text-align: center;
+  line-height: 2em;
+  width: 30%;
+  margin-bottom: 1em;
+}
+
+.monials h6 {
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 1.2em;
+}

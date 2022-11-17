@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+.form {
+  position: fixed;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.form-register,
+.form-login {
+  box-shadow: 1px 2px 5px rgba(22, 65, 29, 0.5);
+  background:#fff;
+  border-radius: 15px;
+  display: flex;
+  flex-flow: column;
+  min-width: 20rem;
+  /* max-height: 550px; */
+  padding: 0rem 2rem;
+  overflow: auto;
+  /* transition: all 0.4s linear; */
+  padding-bottom: 2rem;
+}
+
+@keyframes animReg {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+    pointer-events: visible;
+  }
+
+  100% {
+    transform: translateY(50%);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.form-register.affect {
+  animation: animReg 0.4s ease forwards;
+}
+
+@keyframes transFade {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+    pointer-events: visible;
+  }
+}
+
+@keyframes transFadeOut {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(50%);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes animLog {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.form-login.affects {
+  animation: animLog 0.4s ease forwards;
+}
+
+.form-register.effect {
+  animation: transFade 0.4s ease forwards;
+}
+
+.form-login.effects {
+  animation: transFadeOut 0.4s ease forwards;
+}
+
+.form-login {
+  box-shadow: none;
+  /* position: absolute; */
+}
+
+.form-register .account {
+  text-transform: uppercase;
+  color: seagreen;
+  margin: 1rem auto;
+}
+
+.account-details p {
+  font-size: 0.8rem;
+}
+
+.account-details .acc-details {
+  color: seagreen;
+  text-transform: uppercase;
+}
+
+.account-details {
+  display: flex;
+  gap: 2rem;
+}
+
+.account-details .eco-account {
+  padding-left: 2rem;
+  border-left: 2px solid seagreen;
+}
+
+.form-register h3,
+.form-login h3 {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.5rem;
+  /* font-family: Montserrat; */
+  color: seagreen;
+  margin: 1rem auto;
+  margin-bottom: 1rem;
+}
+
+/* .form-register {
+  opacity: 0;
+  pointer-events: none;
+} */
+
+.form-register .first-half,
+.second-half {
+  display: flex;
+  flex-flow: column;
+}
+
+.form-register input,
+.form-register select,
+.form-login input {
+  outline: none;
+  height: 2.5rem;
+  border-radius: 20px;
+  padding: 0 1rem;
+  border: 1.8px solid rgb(48, 138, 63);
+  width: 100%;
+}
+.form-register select{
+  background:transparent;
+}
+
+.form-register input[name="name"],
+.form-register select[name="pick_your_course"],
+.form-register input[name="full_name"],
+.form-register input[name="mobile"],
+.form-login input[name="username"],
+.form-register input[list="gender"],
+.form-register input[name="department"],
+.form-register input[name="password1"],
+.form-register input[name="company"] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 4rem solid white;
+}
+
+.form-register input[name="password2"],
+.form-register input[name="password"],
+.form-login input[name="password"],
+.form-register input[name="email"],
+.form-register input[name="company1"],
+.form-register input[name="username"],
+.form-register input[name="sex"],
+.form-register input[name="occupation"]{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 4rem solid white;
+  /* border-bottom: none; */
+}
+
+/* .form-register #div_id_email1{
+  outline: none;
+  height: 2.5rem;
+  border-radius: 20px;
+  padding: 0 1rem;
+  border: 1.8px solid rgb(48, 138, 63);
+  width: 100%;
+
+} */
+
+.form-register button[type="submit"],
+.form-login button {
+  height: 2.5rem;
+  margin-top: 2rem;
+  min-width: 5rem;
+  border-radius: 20px;
+  background: rgb(48, 138, 63);
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.2s linear;
+  box-shadow: 1px 2px 5px rgba(22, 65, 29, 0.5);
+}
+
+.form-register button[type="submit"]:hover {
+  transform: scale(0.98);
+}
+
+.form-login button:hover {
+  transform: scale(0.98);
+}
+
+.form-register p a,
+.form-login p a {
+  text-decoration: none;
+  color: seagreen;
+}
+
+.form-register .lnk,
+.form-login .lnk {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 0 auto;
+  border-bottom: 1px solid seagreen;
+}

@@ -1,0 +1,73 @@
+
+{% load static %}
+{% load cloudinary %}
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head> 
+
+
+       <!-- The header starts here -->
+    <header id="check">
+      <div class="bar">
+        <span class="bar_span"></span>
+        <span class="bar_span"></span>
+        <span class="bar_span"></span>
+      </div> 
+      <div class="nav">
+          <div class="logo-icon">
+            <a href="/" >
+              <img src="{% static "img/lead.jpg" %}" alt="LeadLeap-logo-icon">
+            </a>
+          </div>
+          <div class="nav-links">
+            <ul>
+              {% if request.user.is_authenticated and request.user.is_head or request.user.is_admin %}
+                <li><a id="" href="/">Home</a></li>
+                <li><a href="#footer">Contact</a></li>
+                <li><a href="/{{request.user}}_dashboard/">Dashboard</a></li>
+                <li><a href="/report/{{request.user}}">Report</a></li>
+                <li><a href="/generate_report/{{request.user}}">Download Report</a></li>
+                <li><a class="diff" id="" href="/logout">Logout</a></li>             
+        </div>    
+      </div>
+          
+
+              {% elif request.user.is_authenticated %}
+                <li><a id="" href="/">Home</a></li>
+                <li><a href="/{{request.user}}_dashboard/">Dashboard</a></li>
+                <li><a class="diff" id="login" href="/logout">Logout</a></li>
+
+              {% elif user.username%}
+
+                <li><a id="login" href="/">Home</a></li>
+                <li><a class="diff" id="login" href="/logout">Logout</a></li>
+                          
+              {% else %}
+                
+                <li><a href="#footer">Contact</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="/get_registered">Online class</a></li>
+                <li><a href="/online_test">Online test</a></li>
+                <li><a class="diff" id="" href="/login">Login</a></li>
+                </ul>            
+          </div>    
+        </div>
+        {% endif %} 
+     
+  </header>
+  <!-- The header ends here -->
+
+  {% for message in messages %}
+  {% if 'success' in message.tags %}
+  <div class="success" style="">
+    <p class="success-text">{{ message|striptags }}</p>
+  </div>
+
+{% elif 'error' in message.tags %}
+  <div class="failure">
+    <p class="fail-text">Error! {{ message|striptags }}</p>
+  </div>
+  {% endif %}
+  {% endfor %} 

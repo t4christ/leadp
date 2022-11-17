@@ -1,0 +1,81 @@
+
+{% load static %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html class=" ueno-js ueno-no-touch ueno-history ueno-backgroundsize ueno-cssanimations ueno-cssgradients ueno-csstransforms ueno-csstransforms3d ueno-csstransitions ueno-video ueno-svg ueno-inlinesvg ueno-csscalc ueno-cssremunit ueno-cssvhunit ueno-cssvwunit ueno-no-iphone-safari" style=""><!--<![endif]--><head>
+<meta charset="utf-8">
+<meta name="description" content="BlackTie Free Bootstrap Theme">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Lead-Leap Consulting</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+<link rel="stylesheet" href="{% static 'css/takeatest.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/mediaQueriesLL.css' %}">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<body class="loaded">
+
+  <header>
+    {% include 'header.html' %}
+  </header>
+  
+  <div class="row">
+    <div class="col-1">  
+      
+{% if request.user.pick_course %}
+<h2>{{user.full_name}} </h2>
+    <h3> Welcome to to your tutorial class </h3>
+    <p></p>
+    <h4>Click on Any Category to View Course</h4>
+{% for course in course|dictsort:'title'%}
+
+
+
+<div id="{{course.title|cut:' '|lower}}" class="col-md-4 col-sm-12 col-xs-12 vid">
+    {% ifchanged %}
+    <h4 class="welcome text-center btn-success"><a href="/{{request.user}}/{{course.slug}}/">{{course.title}}</a></h4>
+    {% endifchanged %} 
+
+</div>
+
+
+{% endfor %}
+
+{%else%}
+<h2>{{user.full_name}} </h2>
+      <h3> <strong> Welcome to Your Assessment Portal </strong> </h3>
+      <p></p>
+      <h4>Click on your test to commence</h4>
+      <a href="/test/{{user.username}}">
+      <button type="button"> Take Test Now <img src="{% static 'img/arrow.png' %}"></button>
+      </a>
+  </div>
+{% endif %}
+<div class="col-2">
+  <img src="{% static 'img/casual-life-3d-likes.png' %}" class="controller">
+  <div class="color-box"></div>
+</div>
+</div>
+
+<!-- End Signup form -->
+
+</div>
+</div>
+
+
+
+
+
+</div>
+
+    <!-- Footer starts here -->
+
+    {% include 'footer.html' %}
+
+    <!-- Footer ends here -->
+
+</body>
+</html>

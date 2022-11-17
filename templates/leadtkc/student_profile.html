@@ -1,0 +1,128 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en" class=""><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{request.user}}'s Dashboard</title>
+
+    <link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "/css/font-awesome.min.css" %}">
+  <link rel="stylesheet" href="{% static "/css/jquery.bxslider.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "/css/isotope.css" %}" media="screen">
+  <link rel="stylesheet" href="{% static "/css/animate.css" %}">
+  <link rel="stylesheet" href="{% static "/js/fancybox/jquery.fancybox.css" %}" type="text/css" media="screen">
+  <link href="{% static "/css/style.css" %}" rel="stylesheet">
+  <style type="text/css">.fancybox-margin{margin-right:15px;}</style></head>
+  <body>
+  
+{% include "header.html" %}
+
+
+<style>
+
+
+li{
+
+  list-style: none;
+}
+
+
+</style>
+
+  <div class="jumbotron" >
+      <h2 class="">Welcome to Your Profile Platform <strong> {{request.user}}</strong>
+  {% if user.image %}
+            <img src="{{ user.image.url }}" width="60" 
+            style="border-radius:50%;height:60px;box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);">
+                      {% endif %}</strong>
+
+      
+     </h2>
+      
+    </div>
+<!-- section works -->
+    <section id="section-works" style="height:auto;" class="section appear clearfix">
+      <div class="container">           
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+
+
+
+<div class="  animation-elemen slide-right testimonial">
+<div class="table-responsive col-md-12 col-sm-12 col-xs-12" style="">
+<div class="row" style="color:black;">
+    <div id="table" class="col-md-10 col-md-offset-1  col-xs-4 col-xs-offset-3 ">
+    <table  class="table" style="border:2px solid whitesmoke; box-shadow:5px 5px 5px 5px;">
+    <h1 class="text-center" >Profile</h1>
+    <thead class="row" >
+        <tr  >
+        <th class="col-md-10 text-left">Information</th>
+        <th class="col-md-10 text-center">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td class="text-left"><i class="glyphicon glyphicon-user "></i>Username:</td><td class="text-center"> {{ request.user }}</td></tr>
+    <tr>
+    <td class="text-left" ><i class="glyphicon glyphicon-sort-by-alphabet"></i>Full Name:</td> <td class="text-center">{{ user.full_name }}</td></tr>
+    
+    <tr>
+    <td class="text-left"><i class="glyphicon glyphicon-envelope"></i>Email:</td> <td class="text-center">{{ user.email }}</td></tr>
+    <tr>
+    
+    <td class="text-left"><i class="glyphicon glyphicon-phone"></i>Phone:</td><td class="text-center"> {{ user.phone_number }}</td></tr>
+    <tr>
+    <td class="text-left"><i class="glyphicon glyphicon-number"></i>Matric No:</td><td class="text-center"> {{ user.matric_no }}</td></tr>
+    <tr>
+<!--    <td class="text-left"><i class="glyphicon glyphicon-cloud"></i>Website:</td><td class="text-center"> {{ user.profile_user.website }}</td></tr>-->
+    <td class="text-left"><i class="glyphicon glyphicon-home"></i>Department:</td><td class="text-center"> {{ user.department }}</td></tr>
+    <td class="text-left"><i class="glyphicon glyphicon-ball"></i>Hobby:</td><td class="text-center"> {{ user.profile_user.hobby }}</td></tr>
+    <td class="text-left"><i class="glyphicon glyphicon-home"></i>Home_Address:</td><td class="text-center"> {{ user.profile_user.home_address }}</td></tr>
+    </tr>
+    </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+</section>
+
+{% include "footer.html" %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static "/js/jquery-2.1.1.min.js" %}"></script>
+
+<script src="{% static "/js/delete.js" %}"></script>
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "/js/wow.min.js" %}"></script>
+    <script src="{% static "/js/agency.min.js" %}"></script>
+    <script src="{% static "/js/fancybox/jquery.fancybox.pack.js" %}"></script>
+    <script src="{% static "/js/jquery.isotope.min.js" %}"></script>
+    <script src="{% static "/js/jquery.bxslider.min.js" %}"></script>
+    <script src="{% static "/js/functions.js" %}"></script>
+
+    <script>
+    wow = new WOW(
+    {
+
+    } )
+    .init();
+    </script>
+
+
+    </body></html>

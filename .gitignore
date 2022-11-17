@@ -1,0 +1,16 @@
+dplay.py
+*.xls
+*.xlsx
+jplay.js
+*.dump*
+linkhtml.py
+.env
+*.json
+*.csv
+*.cs
+*.exe
+uk.js
+uk.py
+xslconvert.py
+betterfuture.txt
+fixtures

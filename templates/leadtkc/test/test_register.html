@@ -1,0 +1,171 @@
+
+{% load static %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html class=" ueno-js ueno-no-touch ueno-history ueno-backgroundsize ueno-cssanimations ueno-cssgradients ueno-csstransforms ueno-csstransforms3d ueno-csstransitions ueno-video ueno-svg ueno-inlinesvg ueno-csscalc ueno-cssremunit ueno-cssvhunit ueno-cssvwunit ueno-no-iphone-safari" style=""><!--<![endif]--><head>
+<meta charset="utf-8">
+<meta name="description" content="BlackTie Free Bootstrap Theme">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+
+<title>Lead-Leap Consulting</title>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+<link rel="stylesheet" href="{% static 'css/newLogin.css' %}">
+<link rel="stylesheet" href="{% static 'css/mediaQueriesLL.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .banner-content {
+        position: relative;
+    }
+    .banner-content::after{
+        content:"";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    .bar{
+        display:none;
+        cursor:not-allowed;
+        pointer:none;
+    }
+</style>
+
+<header id="check">
+    <div class="bar">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div> 
+    <div class="nav">
+        <div class="logo-icon">
+          <a href="/" >
+            <img src="{% static "img/lead.jpg" %}" alt="LeadLeap-logo-icon">
+          </a>
+        </div>
+        <div class="nav-links">
+          <ul>
+            {% if request.user.is_authenticated and request.user.is_head or request.user.is_admin %}
+
+              <li><a id="" href="/">Home</a></li>
+              <li><a href="#footer">Contact</a></li>
+              <li><a href="/{{request.user}}_dashboard/">Dashboard</a></li>
+              <li><a href="/report/{{request.user}}">Report</a></li>
+              <li><a href="/generate_report/{{request.user}}">Download Report</a></li>
+              <li><a class="diff" id="" href="/logout">Logout</a></li>
+        
+
+            {% elif request.user.is_authenticated %}
+              <li><a id="" href="/">Home</a></li>
+              <li><a href="/{{request.user}}_dashboard/">Dashboard</a></li>
+              <li><a class="diff" id="login" href="/logout">Logout</a></li>
+
+            {% elif user.username%}
+
+              <li><a id="login" href="/">Home</a></li>
+              <li><a class="diff" id="login" href="/logout">Logout</a></li>
+                        
+            {% else %}
+              
+              <li><a href="#footer">Contact</a></li>
+              <li><a href="#about">About us</a></li>
+              <li><a href="/get_registered">Online class</a></li>
+              <li><a href="/online_test">Online test</a></li>
+              <li><a class="diff" id="" href="/login">Login</a></li>
+              </ul>            
+        </div>    
+      </div>
+      {% endif %} 
+   
+</header>
+
+<!-- The begining of the banner -->
+<section class="banner" id="home">
+
+  {% for message in messages %}
+  {% if 'success' in message.tags %}
+  <div class="success" style="">
+    <p class="success-text">{{ message|striptags }}</p>
+  </div>
+  
+  {% elif 'error' in message.tags %}
+  <div class="failure">
+    <p class="fail-text">Error! {{ message|striptags }}</p>
+  </div>
+  {% endif %}
+  {% endfor %} 
+
+    <div class="banner-content">
+        <img src="{% static 'img/frame-1.jpg' %}" alt="">
+    </div>
+
+</section>
+<!-- The end of the banner -->
+
+<section class="form">
+    <form action="" class="form-register online-test-form" method="POST">
+            <h3>Register</h3>
+
+            {% for message in messages %}
+            <div class="alert-dismissible alert-{{ messages.tags }} " role="alert" id="error">
+               <strong>Error: </strong> {{ message }}
+           </div>          
+           {% endfor %}
+
+            {% csrf_token %}
+                <div id="div_id_name" class="">
+                    <div class=""> <input type="text" name="name" maxlength="550" placeholder="Fullname(name and surname)" class="" required="" id="id_name"> 
+                    </div> 
+                </div> 
+                    
+                    
+                    <div id="div_id_email1" class="">
+                    <div class=""> <input type="email" name="email" class="" required=""placeholder="Email" id="id_email"> 
+                    </div>
+                 </div>
+                    
+                    
+                     <div id="div_id_mobile" class="">
+                     <div class=""> <input type="text" name="mobile" placeholder="Mobile" class="" required="" id="id_mobile"> </div> </div>
+                
+                
+                 <div id="div_id_company" class="">
+                <div class=""> <input type="text" name="company1" placeholder="Company" class="" required="" id=""> </div> </div> 
+                
+                
+                <div id="div_id_department" class="">
+                <div class=""> <input type="text" name="department" placeholder="Department" class=""  required="" id="id_department"> </div> </div> 
+    
+                <div id="div_id_password" class="">
+                <div class=""> <input type="password" name="password" placeholder="Password" class="" required="" id="id_password"> </div> </div>
+
+                <button type="submit">Register</button>
+                <p class="lnk">Already have an account? Click<a href="/login" id="register"> here</a></p>
+            </div>
+    </form>
+</section>
+
+<!-- The Register View Ends here --> 
+
+    <!-- Footer starts here -->
+
+    {% include 'footer.html' %}
+
+    <!-- Footer ends here -->
+
+    <script>
+      const currentAlert = document.querySelector('#error');
+      if(currentAlert){
+        setTimeout(() => {
+          currentAlert.remove();
+          }, 3000);
+      }
+    </script>
+
+
+</body>
+</html>

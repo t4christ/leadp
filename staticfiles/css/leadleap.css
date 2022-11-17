@@ -1,0 +1,178 @@
+header {
+  height: 800px;
+  background: white;
+  border-bottom: 2px solid whitesmoke;
+  
+  background-image:linear-gradient(rgba(0, 0, 0, 0.7)100%,rgba(0,0,0,0.5)100%),url('img/headerbackground.jpeg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+}
+
+.content-header {
+  width:650px;
+  position:absolute;
+  top:30%;
+  left:8%;
+}
+
+.content-header h1 {
+  font-size: 82px;
+  color:white;
+  margin-bottom: 1%;
+}
+.content-header p {
+  font-size: 25px;
+  color:white;
+}
+
+.course-outline {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top:5%;
+}
+
+.course-outline-header{
+  text-align: center;
+  font-size: 82px;
+
+}
+/* .sub-course-outline{
+
+} */
+.course-outline .sub-course-outline{
+  margin-top:5%!important;
+  height:auto;
+  width:48%;
+  margin:auto;
+  background:whitesmoke;
+  border-radius:31px;
+}
+.course-outline .sub-course-outline h2{
+  text-align: center;
+}
+
+.course-outline .sub-course-outline p{
+  font-size: 25px;
+}
+
+.course-outline .sub-course-outline footer{
+  background:green;
+  border-bottom-left-radius:31px;
+  border-bottom-right-radius:31px;
+  color: white;
+  text-align: center;
+  height:60px;
+  padding-top:19px;
+  font-size: 22px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: "Poppins ExtraBold";
+}
+
+.nav {
+  height: 120px;
+  width: 100%;
+  background-color: white;
+  position: relative;
+  border-bottom: 2px solid whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: black;
+  padding: 10px 10px 10px 32px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+  padding-right:1%;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav > .nav-links > a:nth-child(4) {
+  background: green;
+  border-radius: 17%;
+  color: white;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: lightgreen;
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}

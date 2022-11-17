@@ -1,0 +1,184 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}  */
+
+.test-wrapper {
+  background: rgb(241, 241, 241);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.test-container {
+  width: 95%;
+  height: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+
+.test-info,
+.test-question {
+  background: white;
+  display: flex;
+  flex-flow: column;
+  /* padding: 3rem; */
+  border-radius: 10px;
+}
+
+.test-info {
+  display: flex;
+  min-width: 300px;
+  flex: 0.5;
+  margin: 0 auto;
+  gap: 5rem;
+  padding: 5rem 2rem;
+}
+
+.test-info h3 {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  color: rgb(200, 201, 201);
+}
+
+.test-info .time {
+  display: flex;
+  flex-flow: column;
+  gap: 0.2rem;
+}
+
+.test-info .time .time-left {
+  text-transform: uppercase;
+  color:rgb(25, 204, 100);
+}
+
+.test-info .time-counter {
+  color: rgb(25, 204, 100);
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.test-info .instruction h4 {
+  text-transform: uppercase;
+  color:rgb(25, 204, 100);
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.test-info .instruction p,
+.test-info .instruction p ol *{
+  color: rgb(25, 204, 100);
+  text-align: justify;
+  margin: 0.3rem 0;
+}
+
+.test-info input[type="submit"] {
+  padding: 1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  border: none;
+  background: rgb(25, 204, 100);
+  transition-duration: 0.4s;
+  box-shadow: 2px 4px 5px rgba(9, 75, 36, 0.3);
+}
+
+.test-info input[type="submit"]:hover {
+  transform: scale(0.95);
+}
+
+.test-info .test-check {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.test-info .test-check .completed {
+  color: rgb(25, 204, 100);
+}
+
+.test-question {
+  margin: 0 auto;
+  height: 100%;
+  min-width: 300px;
+  padding: 1rem;
+  flex: 1;
+  overflow: scroll;
+  gap: 2rem;
+} 
+
+.test-question .questions {
+  display: flex;
+  flex-flow: column;
+}
+
+.question {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.question .options {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  background: rgb(228, 225, 225);
+  border-radius: 10px;
+  padding: 3rem 2rem;
+}
+
+.question .option {
+  display: flex;
+  gap: 1rem;
+}
+
+.question .circle  {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  /* padding-right: 2rem; */
+} 
+
+/* .questions .partial button[type="submit"] {
+  background: green;
+} */
+
+button#submit.partial {
+  padding: 1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  border: none;
+  background: rgb(25, 204, 100);
+  transition-duration: 0.4s;
+  box-shadow: 2px 4px 5px rgba(9, 75, 36, 0.3);
+  
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.circle.active {
+  background: rgb(20, 248, 127);
+  border: 3px solid white;
+}
+
+@media (max-width: 770px) {
+  .test-info {
+    flex: 1;
+  }
+}

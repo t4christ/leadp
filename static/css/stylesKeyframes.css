@@ -1,0 +1,64 @@
+@import url("styles.css");
+@keyframes left-flow {
+  0% {
+    transform: translateX(-100vw) rotate(0deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-flow {
+  0% {
+    transform: translateX(100vw) rotate(0deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes changeFirst {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  100% {
+    transform: translateY(10px) rotate(45deg);
+  }
+}
+@keyframes changeSecond {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes changeThird {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  100% {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,196 @@
+<script>
+let arr_score = {};
+let final_score=[]
+let contain = null;
+var changed = false;
+let link = document.querySelector(".link").value;
+let ran_score = document.querySelector(".ran_score").value;
+let t;
+
+
+function getName(event){
+var targ= event.target
+var minutes = 0
+
+if(targ.checked){
+  
+            arr_score[targ.name]=targ.value          
+
+        }
+else{
+     delete arr_score[targ.name]
+}  
+}
+
+
+
+function stopTimer(){
+    clearInterval(t)
+}
+
+
+function removeDummy() {
+    var elem = document.querySelector('.start-btn');
+    elem.parentNode.removeChild(elem);
+    return false;
+}
+
+
+
+
+      let partial = document.querySelector(".test-question")
+        let submit_answer;
+        partial.addEventListener("submit",(e)=>{
+                        e.preventDefault()
+                        submit_answer = true;
+                    })
+
+
+
+function started(){
+const time_start= "Player Started"
+const start = new Date().getTime();
+const start_time= Math.floor(start/1000 % 60);
+
+$.ajax({
+      url: link,
+      data: {'time_start':start_time,csrfmiddlewaretoken:'{{csrf_token}}'},
+      type: "post",
+      dataType: 'json',
+      success: function (data) {
+
+    if(data.reveal_question){
+        document.querySelector(".test-question").innerHTML=data.reveal_question
+}
+      },
+
+    });
+}
+
+
+
+function startTimer(duration, display) {
+  console.log('display1',display)
+ 
+    let timer = duration, minutes, seconds;
+    let get_total= document.querySelector(".score").innerHTML
+    let fire = 0
+    let user = document.querySelector(".user").value;
+    
+t =  setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        function once(fn,context){
+            var result;
+            return function(){
+                if(fn){
+                    result = fn.apply(context || this, arguments);
+                    fn=null;
+                };
+                return result;
+            }
+        }
+
+  
+        
+
+
+        if (--timer == 0 && fire == 0 || submit_answer) {
+            stopTimer()
+           $(".result").show(1000);
+            timer = duration;
+            minutes = "";
+            seconds = "";
+
+            display.textContent = ""
+            document.querySelector(".test-question").style.display="none"
+            document.querySelector("#recharge-time").innerHTML="Test Over"
+     //       document.querySelector(".play").style.display="block"
+      //      document.querySelector(".comp").style.display="block"
+        //    document.querySelector(".notify").style.display="block"
+            var token= document.getElementsByName("csrfmiddlewaretoken").innerText
+            fire = 1
+
+         
+ 
+ for (var i in arr_score){
+ final_score.push(arr_score[i])
+     }
+
+var scoreSaver = once(function(){
+const end = new Date().getTime();
+const end_time= Math.floor(end/1000 % 60);
+    $.ajax({
+      url: link,
+      data: {'answer':final_score,'ran_score':ran_score,'end_time':end_time,csrfmiddlewaretoken:'{{csrf_token}}'},
+      type: "post",
+      dataType: 'json',
+      success: function (data) {
+        
+        $('#start').attr("id","").hide();
+       for (var member in arr_score) delete arr_score[member];
+       final_score.splice(0,final_score.length);
+//       console.log(final_score)
+  //     console.log(arr_score)
+
+    if(data.thanks){
+        
+
+          var player_score=data.user_score
+          var correct_ans=parseInt(player_score)
+
+        if (correct_ans === 100){
+            $(".result").hide(1000)
+        let result = document.querySelector("#score-result").innerHTML=`Thank you for taking the test your score is ${correct_ans} marks`;
+        }
+      else if(data.busted){
+            document.querySelector(".result-wrap").innerHTML=data.busted
+        }
+
+//        else if(data.user_score){
+  //          document.querySelector(".result-wrap").innerHTML=data.user_score
+    //    }
+
+      else if(correct_ans === 0) {
+        document.querySelector(".result").style.display="none"
+        document.querySelector(".result").innerHTML="Sorry No Score Recorded"
+        document.querySelector(".result-wrap").innerHTML="Your Score is 0" 
+      }
+      else{
+         document.querySelector("#score").innerHTML= `Score ${correct_ans}`;
+        let result = document.querySelector("#score-result").innerHTML=`Thank you for taking the test your score is ${correct_ans} marks`; 
+            
+      }
+
+      }
+    }
+});
+});
+scoreSaver();           
+        }
+
+    }, 1000);
+        
+}
+
+
+var start = document.querySelector('#start');
+if(start){
+start.onclick = function () {
+    started()
+    removeDummy()
+    var minutes = 60 * 10,
+        display = document.querySelector('#recharge-time');
+        $('.test-question').show(1000);
+        $("#start").css({"transform":"scale(1.1)","transition":"all 0.8s ease-in-out","opacity":"0.9"})
+    startTimer(minutes, display);
+};
+}
+
+</script>

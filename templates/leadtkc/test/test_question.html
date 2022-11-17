@@ -1,0 +1,76 @@
+  
+{% load static %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html class=" ueno-js ueno-no-touch ueno-history ueno-backgroundsize ueno-cssanimations ueno-cssgradients ueno-csstransforms ueno-csstransforms3d ueno-csstransitions ueno-video ueno-svg ueno-inlinesvg ueno-csscalc ueno-cssremunit ueno-cssvhunit ueno-cssvwunit ueno-no-iphone-safari" style=""><!--<![endif]--><head>
+<meta charset="utf-8">
+<meta name="description" content="BlackTie Free Bootstrap Theme">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Lead-Leap Consulting</title>
+<link rel="stylesheet" type="text/css" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css' />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+<link rel="stylesheet" href="{% static 'css/leadleapTest.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/mediaQueriesLL.css' %}">
+
+</head>
+
+<body>
+
+  <header>
+    {% include 'header.html' %}
+  </header>
+
+<div class="test-wrapper">
+  <div class="test-container">
+      <div class="test-info">
+
+          <div  class="countbar time" style="">
+            <input type="hidden" class="ran_score" value="{{ran_score}}">
+            <input type="hidden" class="user" value="{{user.username}}">
+            <input type="hidden" class="link" value="/submit_test/{{user.username}}/">
+            <div class="time-counter">
+               <span> <div class="time-left timer number" id="recharge-time"><h4>Count Down</h4></div></span>
+                  <span><div  class=" score time-left"  id="score"><h4>Score: </h4>
+                    {% for score in all_score %}
+                      {{score.score}}
+                    {% endfor %}
+                  </div></span>
+            </div>   
+          </div>        
+
+          <div class="instruction">
+              <h4>LeadLeap</h4>
+                <p>PLEASE READ INSTRUCTIONS</p>
+                  <ol>
+                      <li> REGISTRATION is required so we can have a proper record of your test!!!</li>
+                      <li> Click on radio button to select an answer!!!</li>
+                      <li> You don't have to waste time on unknown answers. Answer to the best of your ability!!!</li>
+                      <li> When you are done with the questions before time runs out click submit or the system will auto submit when your time has expired.</li>
+                  </ol>
+             </div>
+          <input type="submit" value="start" id="start" class="start-btn">
+
+          <div class=" result-wrap" style="">
+            <h2 id="score-result"></h2>      
+          </div>      
+
+      </div>
+      <div class=" test-question" id="test-question" style="display:block;">
+        <h4 class="result text-centered">
+          <i id="respin" class="resp"></i>
+        </h4>   
+    </div>
+  </div>
+</div>
+
+
+{%include "leadtkc/test/testjsfile.html" %} 
+<script src="{% static 'js/leadleapTest.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{% static 'js/header.js' %}"></script>
+
+</body>
+</html>

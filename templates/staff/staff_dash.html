@@ -1,0 +1,664 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en" class=""><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{request.user}}'s Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "/css/font-awesome.min.css" %}">
+	<link rel="stylesheet" href="{% static "/css/jquery.bxslider.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "/css/isotope.css" %}" media="screen">
+	<link rel="stylesheet" href="{% static "/css/animate.css" %}">
+	<link rel="stylesheet" href="{% static "/js/fancybox/jquery.fancybox.css" %}" type="text/css" media="screen">
+	<link href="{% static "/css/style.css" %}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" %}"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" %}"></script>
+    <![endif]-->
+  <style type="text/css">.fancybox-margin{margin-right:15px;}</style></head>
+  <body>
+	{% include "header.html" %}
+
+<style>
+
+
+li{
+
+  list-style: none;
+}
+
+
+</style>
+
+  <div class="jumbotron" >
+  		<h2 class="">Welcome  to your Dashboard {{request.user}}
+
+            {% if user.image %}
+            <img src="{{ user.image.url }}" width="100"
+            style="border-radius:50%;height:100px;box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);">
+                      {% endif %}
+      </h2>
+
+  	</div>
+<!-- section works -->
+    <section id="section-works" style="height:auto;" class="section appear clearfix">
+      <div class="container">
+        <div class="row">
+           <div class="col-md-12">
+<div class="col-md-4 col-md-offset-4">
+<a href="#submission"><div class=" btn btn-danger submitted-div" style="height:40px;width:100%;margin-top:5%;width:100%;">
+ <span class="text-center " style="color:whitesmoke;font-size:1em;font-weight:bold;">View Submitted Assessments </span>
+</div></a>
+</div>
+
+
+          </div>
+
+
+
+
+
+
+
+<div class="col-md-12">
+              <div class="row">
+                <div class="portfolio-items isotopeWrapper clearfix" id="3">
+                  <article  style="position:absolute;" class="col-md-4 isotopeItem webdesign">
+                    <div class="portfolio-item">
+                      <div class="wow rotateInUpLeft" data-animation-delay="4.8s">
+
+                        <div class=" btn btn-success view" style="height:40px;width:100%;margin-top:5%;width:100%;">
+
+ <span class="text-center " style="color:whitesmoke;font-size:1em;font-weight:bold;"> Class Schedule</span>
+</div>
+
+<a href="#viewclass-div"><div class=" btn btn-primary viewclass" style="height:40px;width:100%;margin-top:5%;width:100%;">
+ <span class="text-center " style="color:whitesmoke;font-size:1em;font-weight:bold;">Click to View Classes</span>
+</div></a>
+
+<hr style="font-size:15px;;">
+
+
+<div class="">
+<div class="" style="margin-top:5%;">
+  <h2 class="text-center">Schedule Classes </h2>
+  <form method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+{{class_form|crispy}}
+<button style="color:whitesmoke;font-weight:bold;" type="submit" name="class"  class="btn btn-danger col-md-12">Schedule Class</button>
+</form>
+</div>
+</div>
+
+
+
+                      </div>
+
+                    </div>
+
+
+
+
+                  </article>
+
+
+
+
+                  <article class="col-md-4 isotopeItem photography">
+                    <div class="portfolio-item">
+                      <div class="wow bounceIn">
+                                           <div class=" btn btn-success view" style="height:40px;width:100%;margin-top:5%;width:100%;">
+<span class="text-center " style="color:whitesmoke;font-size:1em;font-weight:bold;">Asessments Schedule</span>
+</div>
+
+<a href="#assess-div"> <div class=" btn btn-primary viewassess" style="height:40px;width:100%;margin-top:5%;width:100%;">
+<span class="text-center " style="color:whitesmoke;font-size:1em;font-weight:bold;">Click to view Assessments</span>
+</div></a>
+
+<hr style="font-size:15px;;">
+
+
+<div class="">
+<div class="" style="margin-top:5%;">
+  <h2 class="text-center">Schedule Assessments </h2>
+  <form class="schedule-assess" method="POST" >
+    {% csrf_token %}
+
+<div id="div_id_question" class="form-group"> <label for="id_question" class="form-control-label  requiredField">
+                Question<span class="asteriskField">*</span> </label> <div class=""> <textarea name="question" cols="40" rows="10" class="textarea form-control" required="" id="id_question"></textarea> </div> </div> <div id="div_id_subject" class="form-group"> <label for="id_subject" class="form-control-label  requiredField">
+                Subject<span class="asteriskField">*</span> </label> <div class=""> <input name="subject" class="textinput textInput form-control" required="" id="id_subject" type="text"> </div> </div> <div id="div_id_reveal_assignment" class="form-group"> <label for="id_reveal_assignment" class="form-control-label  requiredField">
+                Reveal assignment<span class="asteriskField">*</span> </label> <div class=""> <select name="reveal_assignment" class="select form-control" id="id_reveal_assignment"> <option value="conceal" selected="">conceal</option> <option value="reveal">reveal</option>
+
+</select> </div> </div> <div id="div_id_submit_date" class="form-group"> <label for="id_submit_date" class="form-control-label  requiredField">
+                Submit date<span class="asteriskField">*</span> </label> <div class=""> <input name="submit_date" maxlength="50" class="textinput textInput form-control" required="" id="id_submit_date" type="text"> </div> </div>
+
+<button style="color:whitesmoke;font-weight:bold;" type="submit" name="assign" class=" btn btn-danger col-md-12">Schedule Assessment</button>
+</form>
+
+
+</div>
+</div>
+
+
+
+                      </div>
+                                          </div>
+                  </article>
+
+
+                  <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                      <div class="wow rotateInDownRight">
+                                   <div class=" btn btn-success view" style="height:40px;width:100%;margin-top:5%;width:100%;">
+<span class="text-center " style="color:whitesmoke;font-size:1em;font-weight:bold;">Information Schedule</span>
+</div>
+
+ <a href="#info-div"><div class=" btn btn-primary viewinfo" style="height:40px;width:100%;margin-top:5%;width:100%;">
+ <span class="text-center " style="color:whitesmoke;font-size:1em;font-weight:bold;">Click to view Information</span>
+</div></a>
+
+
+<hr style="font-size:15px;;">
+
+
+<div class="">
+<div class="" style="margin-top:5%;">
+  <h2 class="text-center">Schedule Information </h2>
+  <form method="POST" >
+    {% csrf_token %}
+<form class="schedule-info" method="POST">
+
+<div id="div_id_title" class="form-group"> <label for="id_title" class="form-control-label  requiredField">
+                Title<span class="asteriskField">*</span> </label> <div class=""> <input name="title" class="textinput textInput form-control" required="" id="id_title" type="text"> </div> </div> <div id="div_id_information" class="form-group"> <label for="id_information" class="form-control-label  requiredField">
+                Information<span class="asteriskField">*</span> </label> <div class=""> <input name="information" class="textinput textInput form-control" required="" id="id_information" type="text"> </div> </div> <div id="div_id_info_schedule" class="form-group"> <label for="id_info_schedule" class="form-control-label  requiredField">
+                Info schedule<span class="asteriskField">*</span> </label> <div class=""> <select name="info_schedule" class="select form-control" id="id_info_schedule"> <option value="conceal">conceal</option> <option value="conceal">reveal</option>
+
+</select> </div> </div>
+
+<button style="color:whitesmoke;font-weight:bold;" type="submit" name="info" class=" btn btn-danger col-md-12">Schedule Information</button>
+</form>
+
+</form>
+</div>
+</div>
+
+
+
+
+                      </div>
+
+                    </div>
+                  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+<div class='container'>
+  <div class="row">
+
+
+<div id="viewclass-div" class="col-md-4 viewclass-div" style="height:500px;overflow:scroll;display:none;border:2px solid whitesmoke; box-shadow:5px 5px 5px 5px;margin-top:5%;">
+  <h2 class="text-center">Your List of Classes</h2>
+<!--<input type='button' value='Delete'  id='delete'><br><br>-->
+
+<div id="recordsTable" class="classview">
+  {% if classroom %}
+  {% for class in classroom %}
+  <div id="tr_{{class.id}}" class="deleted_class col-md-12" style="padding-left:0px;padding-right:0px;margin-bottom:5%;">
+
+  <div id="" style="margin-bottom:17%;">
+  <input type='checkbox' id='del_{{class.id}}'>
+  <h3 class="text-center"> Class for {{class.date}}</h3>
+<li class="col-md-12"><i class="fa fa-book"></i>  Subject: {{class.subject}}</li>
+{% if class.material %}
+{%if class.extension == '.png' or class.extension == '.jpg' or class.extension == '.jpeg'   %}
+                    <li style="display:block;margin-top:-3%;margin-bottom:6%;" class="col-md-12"><img src="{{ class.material.url }}"  style="margin-top:5%;width:100%;height:145px;box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);"></li>
+
+
+
+
+
+
+
+{%elif class.extension == '.mp4'  %}
+                    <li style="display:block;margin-top:5%;width:76%;margin-left:12%;padding-left:0px;padding-right:0px;" class="col-md-12">
+                      <iframe class="embed-responsive-item col-md-12" style="padding-left:0px;padding-right:0px;width:100%" autoplay=false src="{{class.material.url}}"></iframe></li>
+
+{%elif  class.extension == '.pdf' or class.extension == '.doc' or class.extension == '.docx'  %}
+<li class="col-md-12"><i class="fa fa-book"></i><a href="{{MEDIA_URL}}{{ class.material.url }}" class="btn btn-sm btn-success">Download Material (.{{class.extension}} file)</a></li>
+
+        {% else %}
+
+        <p class="text-center" style="font-weight:bold;background:red;"> We support pdf,doc,docx,jpg,png,mp4 and jpeg formats only.</p>
+
+{% endif %}
+
+{% endif %}
+<li class="col-md-12"><i class="fa fa-book"></i>  Topic: {{class.topic}}</li>
+<li class="col-md-12"><i class="fa fa-calendar"></i>  Date: {{class.date}}</li>
+<li class="col-md-12"><i class="fa fa-clock-o"></i>  Time: {{class.time}}</li>
+<li class="col-md-12"><i class="fa fa-clock-o"></i>  Note: {{class.note}}</li>
+<li class="col-md-12"><i class="fa fa-clock-o"></i>  Status: {{class.reveal_class}}</li>
+<!--<input type='checkbox' id='del_{{class.id}}'>-->
+
+<input type="hidden" id="classdel-value" value="staff/class/{{class.pk}}/remove/{{class.user}}">
+<input type="hidden" id="class-del" value="{{class.subject}}">
+<input type="hidden" id="pri" value="{{class.pk}}">
+<input type="hidden" id="image-url" value="/staff/edit_class/{{class.pk}}/{{class.user}}/">
+   <button type="button"
+              class="btn btn-danger btn-sm pull-right js-delete-class"
+              data-url="/staff/class/{{class.pk}}/remove/{{class.user}}/">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+
+<button type="button" class="btn btn-info btn-sm pull-right js-update-class" data-url="/staff/edit_class/{{class.pk}}/{{class.user}}/">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+  </button><br><br>
+</div>
+</div>
+{% endfor %}
+{% else %}
+<h3 class="text-center">No Class Scheduled Yet </h3>
+{% endif %}
+</div>
+</div>
+
+
+
+<div id="assess-div" class="col-md-4 viewassess-div" style="display:none;border:2px solid whitesmoke; box-shadow:5px 5px 5px 5px;margin-top:5%;">
+
+  <h2 class="text-center">Your List of Assessments</h2>
+  <!--<input type='button' value='Delete' id='remove'><br><br>-->
+
+  <div class="assessview">
+  {% if assignment %}
+  {% for class in assignment %}
+
+ <div id="recordsTable" class="occupy{{class.pk}} recordassess">
+
+
+  
+   <div id="tr_{{class.pk}}" class="col-md-12" style="padding-left:0px;padding-right:0px;margin-bottom:5%;">
+
+  <div id="" style="margin-bottom:17%;">
+  <input type='checkbox' id='del_{{class.id}}'>
+<div class="class{{class.pk}}">
+  <h3 class="text-center"> Assessment for {{class.subject}}</h3>
+<li><i class="fa fa-book"></i>  Subject: {{class.subject}}</li>
+<li><i class="fa fa-book"></i>  Question: {{class.question}}</li>
+<li><i class="fa fa-calendar"></i> Submit: {{class.submit_date}}</li>
+<li><i class="fa fa-calendar"></i> Status: {{class.reveal_assignment}}</li>
+<!--<a id="asidel" class="btn btn-default pull-right" style="background:#dd4141;" ><span class="glyphicon glyphicon-remove"></span></a>-->
+<input type="hidden" id="testdel" value="staff/assignment/{{class.id}}/remove/{{class.user}}">
+<input type="hidden" id="assign-del" value="class{{class.pk}}">
+
+<input type="hidden" id="edita" value="staff/edit_assess/{{class.pk}}/{{class.user}}">
+<input type="hidden" id="editapk" value="{{class.pk}}">
+<input type="hidden" id="editauser" value="{{class.user}}">
+<!--<input type='button' id="assign-{{class.pk}}" class="pull-right eda" value='Edit'  id='edit-assess'><br><br>-->
+
+<button type="button"
+              class="btn btn-danger btn-sm pull-right js-delete-test"
+              data-url="/staff/assignment/{{class.pk}}/remove/{{class.user}}/">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+
+<button type="button" class="btn btn-info btn-sm pull-right js-update-assess" data-url="/staff/edit_assess/{{class.pk}}/{{class.user}}/">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+  </button><br><br>
+</div>
+
+</div>
+</div>
+</div>
+{% endfor %}
+
+{% else %}
+<h3 class="text-center">No Assessment Scheduled Yet </h3>
+{% endif %}
+</div>
+</div>
+
+
+<div id="info-div" class="col-md-4 viewinfo-div " style="display:none;border:2px solid whitesmoke; box-shadow:5px 5px 5px 5px;margin-top:5%;">
+  
+  <h2 class="text-center">Your List of Information</h2>
+  <div class="infoview">
+  {% if informat %}
+  {% for info in informat %}
+   
+<div class="{{info.info_schedule}}" id="recordsTable">
+<div id="tr_{{info.id}}" class="col-md-12" style="padding-left:0px;padding-right:0px;margin-bottom:5%;">
+
+  <div id="" style="margin-bottom:17%;">
+  <input type='checkbox' id='del_{{info.id}}'>
+  <h3 class="text-center"> Information for {{info.title}}</h3>
+<li><i class="fa fa-book"></i>  Title: {{info.title}}</li>
+<li><i class="fa fa-book"></i>  Information: {{info.information}}</li>
+<li><i class="fa fa-calendar"></i>  Status: {{info.info_schedule}}</li>
+
+<p style="background:#dd4141;color:whitesmoke;"  class="{{info.subject}} text-center"></p>
+<input type="hidden" id="delete-value" value="staff/information/{{info.pk}}/remove/{{info.user}}">
+<input type="hidden" id="subj" value="{{info.info_schedule}}">
+<input type="hidden" id="editi" value="staff/edit_info/{{info.pk}}/{{info.user}}">
+<!--<input type='button' value='Edit' class="pull-right" id='edit-info'><br><br>-->
+<input type="hidden" id="editipk" value="{{info.pk}}">
+
+<button type="button"
+              class="btn btn-danger btn-sm pull-right js-delete-info"
+              data-url="/staff/information/{{info.pk}}/remove/{{info.user}}/">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+
+<button type="button" class="btn btn-info btn-sm pull-right js-update-info" data-url="/staff/edit_info/{{info.pk}}/{{info.user}}/">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+  </button><br><br>
+
+</div>
+</div>
+</div>
+{% endfor %}
+
+{% else %}
+<h3 class="text-center">No Information Scheduled Yet </h3>
+{% endif %}
+</div>
+</div>
+
+
+
+
+
+<div id="submission" class="col-md-4 viewsubmitted-div" style="display:none;border:2px solid whitesmoke; box-shadow:5px 5px 5px 5px;margin-top:5%;">
+  <h2 class="text-center"> Submitted Assignment</h2>
+
+<div class="scoreview  infinite-container">
+
+  {% if numbers %}
+    {% for submit in numbers %}
+
+<div id="class{{submit.user}} "  class="infinite-item">
+
+{% if submit.submit_assign == "submit" and submit.department == request.user.department %}
+<span class="text-success num" style="font-weight:bold;"></span><div id="{{class.user}}">
+  <div id="tr_{{submit.id}}" class="col-md-12" style="padding-left:0px;padding-right:0px;margin-bottom:5%;">
+
+  <div id="" style="margin-bottom:17%;">
+
+  <h3 class="text-center">Finished Assignments</h3>
+
+
+{% if submit.image %}
+            <img src="{{ submit.image.url }}"
+            style="margin-bottom:5%;height:200px;width:100%;box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);">
+                      {% endif %}
+
+  <li class="col-md-12"><i class="fa fa-book"></i>  Student: {{submit.user}}</li>
+<li class="col-md-12"><i class="fa fa-book"></i>  Subject: {{submit.assignment_subject}}</li>
+<li class="col-md-12"><i class="fa fa-book"></i>  Topic: {{submit.assignment_topic}}</li>
+<li class="col-md-12"><i class="fa fa-book"></i>  Answer: {{submit.answer|truncatewords:20}}</li>
+<li class="col-md-12"><i class="fa fa-book"></i>  Department: {{submit.department}}</li>
+<li class="col-md-12"><i class="fa fa-calendar"></i> Submitted : {{submit.submitted_at}}</li>
+<li class="col-md-12"><i class="fa fa-calendar"></i> Score: {{submit.score}}</li>
+<li class="col-md-12"><i class="fa fa-calendar"></i> Score Status: {{submit.score_status}}</li>
+
+
+<input type="hidden" id="classdel-value" value="student/class/{{submit.id}}/remove/{{submit.user}}">
+<input type="hidden" id="score-class" value="{{submit.assignment_subject}}">
+<input type="hidden" id="priscore" value="{{submit.id}}">
+<input type="hidden" class="user" value="student-{{submit.user}}">
+<input type="hidden" class="std" value="{{submit.user}}">
+<img  class="edita hidden" id="{% url 'staff:scored' pk=submit.id username=submit.user %}">
+
+
+
+<button type="button" class="btn btn-info btn-sm pull-right js-update-score" data-url="{% url 'staff:scored' pk=submit.pk username=submit.user %}">
+<span class="glyphicon glyphicon-pencil"></span> Edit
+</button><br><br>
+ 
+
+</div>
+</div>
+  </div>
+{% endif %}
+
+
+
+</div>
+
+  
+{% endfor %}
+
+
+
+
+
+{% else %}
+
+<h3 class="text-center">No Assignment Submitted Yet </h3>
+
+
+
+
+{% endif %}
+
+</div>
+
+
+{% if numbers.has_next %}
+    <a style="border-radius:25%;" class="infinite-more-link btn btn-sm btn-success" href="?page={{ numbers.next_page_number }}">More</a>
+  {% endif %}
+
+  <div class="loading text-center text-success" style="display: none;font-weight:bold;">
+    Loading Up Students Assessments...
+  </div>
+
+
+</div>
+
+ <!-- THE MODAL WE WILL BE USING -->
+ <div class="modal fade" id="modal-book">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+{% include "footer.html" %}   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static "/js/jquery-2.1.1.min.js" %}"></script>
+
+<script src="{% static "/js/delete.js" %}"></script>
+
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/infinite.js' %}"></script>
+
+
+<!--<script type="text/javascript">
+
+
+/*jQuery.noConflict();
+formdata =new FormData();
+jQuery("#id_material").on("change", function(){
+  var file= this.files[0];
+  var img_url=jQuery("#image-url").val()
+  if (formdata){
+
+    formdata.append("image",file);
+    jQuery.ajax({
+      url:img_url,
+      type:"POST",
+      data: formdata,
+      processData:false,
+      contentType: false,
+      success:function(){}
+    })
+  }
+})*/
+
+
+
+</script>-->
+
+
+
+
+
+
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $(".infinite-item").each(function(i){
+        $(this).find("span").text(++i);
+      });
+        $('.loading').hide();
+      }
+    });
+
+
+
+    
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+$(function(){
+
+
+$('.viewclass').click(function(){
+  $('.viewclass-div').toggle(1000)
+});
+
+$('.viewassess').click(function(){
+  $('.viewassess-div').toggle(1000)
+});
+
+
+$('.viewinfo').click(function(){
+  $('.viewinfo-div').toggle(1000)
+});
+
+
+
+$('.submitted-div').click(function(){
+  $('.viewsubmitted-div').toggle(1000)
+});
+
+});
+    </script>
+
+
+
+
+
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "/js/wow.min.js" %}"></script>
+    <script src="{% static "/js/agency.min.js" %}"></script>
+    <script src="{% static "/js/fancybox/jquery.fancybox.pack.js" %}"></script>
+    <script src="{% static "/js/jquery.isotope.min.js" %}"></script>
+    <script src="{% static "/js/jquery.bxslider.min.js" %}"></script>
+    <script src="{% static "/js/functions.js" %}"></script>
+
+
+
+    <script>
+    wow = new WOW(
+    {
+
+    }	)
+    .init();
+    </script>
+
+
+    </body></html>

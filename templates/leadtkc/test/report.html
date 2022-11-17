@@ -1,0 +1,45 @@
+
+{% load static %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html class=" ueno-js ueno-no-touch ueno-history ueno-backgroundsize ueno-cssanimations ueno-cssgradients ueno-csstransforms ueno-csstransforms3d ueno-csstransitions ueno-video ueno-svg ueno-inlinesvg ueno-csscalc ueno-cssremunit ueno-cssvhunit ueno-cssvwunit ueno-no-iphone-safari" style=""><!--<![endif]--><head>
+<meta charset="utf-8">
+<meta name="description" content="BlackTie Free Bootstrap Theme">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Lead-Leap Consulting</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
+<link rel="stylesheet" href="{% static 'css/leadleapResult.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/mediaQueriesLL.css' %}">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<header>
+  {% include 'header.html' %}
+</header>
+
+
+<div class="result-wrapper">
+  {% if request.user.is_head or request.user.is_admin%}
+  <div class="result-container">
+    {% for report in report %}
+      <div class="result-head">
+      
+          <h3>{{report.name}}</h3>
+          <h4>Phone number: {{report.mobile}}</h4>
+          <h3>Your Test Result: {{report.score}}</h3>
+      </div>
+      {% endfor %}
+      
+  </div>
+  {% endif %}
+</div>
+
+    <!-- Footer starts here -->
+
+    {% include 'footer.html' %}
+
+    <!-- Footer ends here -->
+
+<script src="{% static 'js/test.js' %}"></script>
+</body></html>

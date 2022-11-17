@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en" class="">
+<head>
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{request.user}}'s Dashboard</title>
+    
+        <!-- Bootstrap -->
+        <link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static "/css/font-awesome.min.css" %}">
+        <link rel="stylesheet" href="{% static "/css/jquery.bxslider.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "/css/isotope.css" %}" media="screen">
+        <link rel="stylesheet" href="{% static "/css/animate.css" %}">
+        <link rel="stylesheet" href="{% static "/js/fancybox/jquery.fancybox.css" %}" type="text/css" media="screen">
+        <link href="{% static "/css/style.css" %}" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" %}"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" %}"></script>
+        <![endif]-->
+      <style type="text/css">.fancybox-margin{margin-right:15px;}</style></head>
+
+</head>
+<body>
+
+
+
+
+<form method="post" class="js-update-scores" id="score" 
+{% for ss in score_pk %}
+action="/student/score/{{ss.pk}}/{{ss.user}}/" >
+{% endfor %}
+  {% csrf_token %}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Score Test</h4>
+  </div>
+  <div class="modal-body">
+   
+    {{test_form|crispy}}
+  </div>
+  <div class="modal-footer">
+    <button type="button" style="color:whitesmoke;border-radius:25%;" class="btn btn-danger" data-dismiss="modal">Close</button>
+    <button type="submit" style="border-radius:25%;color:whitesmoke;" onclick="scoreStudent()" class="btn btn-primary">Score It</button>
+  </div>
+</form>
+
+
+
+
+    <script>
+    wow = new WOW(
+    {
+
+    }	)
+    .init();
+    </script>
+
+</body>
+</html>
